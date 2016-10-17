@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://endpoint.fiap.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://endpoint.fiap.com.br" xmlns:intf="http://endpoint.fiap.com.br" xmlns:tns1="http://entidade.fiap.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://endpoint.fiap.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://entidade.fiap.com.br"/>
+   <element name="cobrar">
+    <complexType>
+     <sequence>
+      <element name="indentificador" type="xsd:string"/>
+      <element name="valor" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cobrarResponse">
+    <complexType>
+     <sequence>
+      <element name="cobrarReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="saldo">
+    <complexType/>
+   </element>
+   <element name="saldoResponse">
+    <complexType>
+     <sequence>
+      <element name="saldoReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cadastrarCliente">
+    <complexType>
+     <sequence>
+      <element name="cliente" type="tns1:Cliente"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cadastrarClienteResponse">
+    <complexType/>
+   </element>
+   <element name="cobrarMensalidade">
+    <complexType>
+     <sequence>
+      <element name="identificador" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cobrarMensalidadeResponse">
+    <complexType/>
+   </element>
+   <element name="listarClientes">
+    <complexType/>
+   </element>
+   <element name="listarClientesResponse">
+    <complexType>
+     <sequence>
+      <element name="listarClientesReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://entidade.fiap.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://endpoint.fiap.com.br"/>
+   <complexType name="Cliente">
+    <sequence>
+     <element name="identificador" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="saldo" nillable="true" type="xsd:double"/>
+     <element name="senha" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="listarClientesResponse">
+
+      <wsdl:part element="impl:listarClientesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="saldoResponse">
+
+      <wsdl:part element="impl:saldoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cobrarMensalidadeResponse">
+
+      <wsdl:part element="impl:cobrarMensalidadeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cobrarRequest">
+
+      <wsdl:part element="impl:cobrar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarClientesRequest">
+
+      <wsdl:part element="impl:listarClientes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cobrarMensalidadeRequest">
+
+      <wsdl:part element="impl:cobrarMensalidade" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cobrarResponse">
+
+      <wsdl:part element="impl:cobrarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cadastrarClienteResponse">
+
+      <wsdl:part element="impl:cadastrarClienteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="saldoRequest">
+
+      <wsdl:part element="impl:saldo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cadastrarClienteRequest">
+
+      <wsdl:part element="impl:cadastrarCliente" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EndpointFinanceiro">
+
+      <wsdl:operation name="cobrar">
+
+         <wsdl:input message="impl:cobrarRequest" name="cobrarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cobrarResponse" name="cobrarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="saldo">
+
+         <wsdl:input message="impl:saldoRequest" name="saldoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:saldoResponse" name="saldoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cadastrarCliente">
+
+         <wsdl:input message="impl:cadastrarClienteRequest" name="cadastrarClienteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cadastrarClienteResponse" name="cadastrarClienteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cobrarMensalidade">
+
+         <wsdl:input message="impl:cobrarMensalidadeRequest" name="cobrarMensalidadeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cobrarMensalidadeResponse" name="cobrarMensalidadeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listarClientes">
+
+         <wsdl:input message="impl:listarClientesRequest" name="listarClientesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listarClientesResponse" name="listarClientesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EndpointFinanceiroSoapBinding" type="impl:EndpointFinanceiro">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="cobrar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cobrarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cobrarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="saldo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="saldoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="saldoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cadastrarCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cadastrarClienteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cadastrarClienteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cobrarMensalidade">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cobrarMensalidadeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cobrarMensalidadeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listarClientes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listarClientesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listarClientesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EndpointFinanceiroService">
+
+      <wsdl:port binding="impl:EndpointFinanceiroSoapBinding" name="EndpointFinanceiro">
+
+         <wsdlsoap:address location="http://localhost:8080/FinanceiroWS/services/EndpointFinanceiro"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,135 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EndpointFinanceiroService WSDL service -->
+
+  <service name="EndpointFinanceiro" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://endpoint.fiap.com.br"/>
+      <parameter name="wsdlServiceElement" value="EndpointFinanceiroService"/>
+      <parameter name="schemaQualified" value="http://entidade.fiap.com.br,http://endpoint.fiap.com.br"/>
+      <parameter name="wsdlServicePort" value="EndpointFinanceiro"/>
+      <parameter name="className" value="br.com.fiap.endpoint.EndpointFinanceiroSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="EndpointFinanceiro"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="cobrar" qname="operNS:cobrar" xmlns:operNS="http://endpoint.fiap.com.br" returnQName="retNS:cobrarReturn" xmlns:retNS="http://endpoint.fiap.com.br" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:indentificador" xmlns:pns="http://endpoint.fiap.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:valor" xmlns:pns="http://endpoint.fiap.com.br" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="saldo" qname="operNS:saldo" xmlns:operNS="http://endpoint.fiap.com.br" returnQName="retNS:saldoReturn" xmlns:retNS="http://endpoint.fiap.com.br" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="cadastrarCliente" qname="operNS:cadastrarCliente" xmlns:operNS="http://endpoint.fiap.com.br" soapAction="" >
+        <parameter qname="pns:cliente" xmlns:pns="http://endpoint.fiap.com.br" type="tns:Cliente" xmlns:tns="http://entidade.fiap.com.br"/>
+      </operation>
+      <operation name="cobrarMensalidade" qname="operNS:cobrarMensalidade" xmlns:operNS="http://endpoint.fiap.com.br" soapAction="" >
+        <parameter qname="pns:identificador" xmlns:pns="http://endpoint.fiap.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listarClientes" qname="operNS:listarClientes" xmlns:operNS="http://endpoint.fiap.com.br" returnQName="retNS:listarClientesReturn" xmlns:retNS="http://endpoint.fiap.com.br" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://endpoint.fiap.com.br" returnItemQName="tns:item" xmlns:tns="http://endpoint.fiap.com.br" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="listarClientes cobrarMensalidade cobrar saldo cadastrarCliente"/>
+
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>cobrarMensalidadeResponse"
+        type="java:br.com.fiap.endpoint.CobrarMensalidadeResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>listarClientes"
+        type="java:br.com.fiap.endpoint.ListarClientes"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>cobrarMensalidade"
+        type="java:br.com.fiap.endpoint.CobrarMensalidade"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>cadastrarCliente"
+        type="java:br.com.fiap.endpoint.CadastrarCliente"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>saldoResponse"
+        type="java:br.com.fiap.endpoint.SaldoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>listarClientesResponse"
+        type="java:br.com.fiap.endpoint.ListarClientesResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>saldo"
+        type="java:br.com.fiap.endpoint.Saldo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>cadastrarClienteResponse"
+        type="java:br.com.fiap.endpoint.CadastrarClienteResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>cobrarResponse"
+        type="java:br.com.fiap.endpoint.CobrarResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://endpoint.fiap.com.br"
+        qname="ns:>cobrar"
+        type="java:br.com.fiap.endpoint.Cobrar"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://entidade.fiap.com.br"
+        qname="ns:Cliente"
+        type="java:br.com.fiap.entidade.Cliente"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
