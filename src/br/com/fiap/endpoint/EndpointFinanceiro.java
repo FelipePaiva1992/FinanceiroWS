@@ -15,10 +15,11 @@ import javax.xml.ws.handler.MessageContext;
 
 import br.com.fiap.entidade.Cliente;
 import br.com.fiap.facade.Financeiro;
+import br.com.governo.ws.Imposto;
+import br.com.governo.ws.WebServiceNF;
+import br.com.governo.ws.WebServiceNFService;
 
-import br.com.fiap.governo.Imposto;
-import br.com.fiap.governo.WebServiceNF;
-import br.com.fiap.governo.WebServiceNFService;
+
 
 @WebService
 public class EndpointFinanceiro{

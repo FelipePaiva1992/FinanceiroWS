@@ -1,5 +1,5 @@
 
-package br.com.fiap.governo;
+package br.com.governo.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

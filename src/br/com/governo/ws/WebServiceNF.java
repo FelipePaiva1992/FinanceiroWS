@@ -1,5 +1,5 @@
 
-package br.com.fiap.governo;
+package br.com.governo.ws;
 
 import java.util.List;
 import javax.jws.WebMethod;
@@ -29,13 +29,13 @@ public interface WebServiceNF {
      * @param valorTotalProdutos
      * @param cpfOuCnpjDestinatario
      * @return
-     *     returns br.com.fiap.client.NotaFiscal
+     *     returns br.com.governo.ws.NotaFiscal
      * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "emitirNotaFiscal", targetNamespace = "http://ws.governo.com.br/", className = "br.com.fiap.client.EmitirNotaFiscal")
-    @ResponseWrapper(localName = "emitirNotaFiscalResponse", targetNamespace = "http://ws.governo.com.br/", className = "br.com.fiap.client.EmitirNotaFiscalResponse")
+    @RequestWrapper(localName = "emitirNotaFiscal", targetNamespace = "http://ws.governo.com.br/", className = "br.com.governo.ws.EmitirNotaFiscal")
+    @ResponseWrapper(localName = "emitirNotaFiscalResponse", targetNamespace = "http://ws.governo.com.br/", className = "br.com.governo.ws.EmitirNotaFiscalResponse")
     public NotaFiscal emitirNotaFiscal(
         @WebParam(name = "cpfOuCnpjDestinatario", targetNamespace = "")
         String cpfOuCnpjDestinatario,
@@ -48,13 +48,13 @@ public interface WebServiceNF {
      * 
      * @param cpfOuCnpj
      * @return
-     *     returns java.util.List<br.com.fiap.client.NotaFiscal>
+     *     returns java.util.List<br.com.governo.ws.NotaFiscal>
      * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarNotasFiscais", targetNamespace = "http://ws.governo.com.br/", className = "br.com.fiap.client.ListarNotasFiscais")
-    @ResponseWrapper(localName = "listarNotasFiscaisResponse", targetNamespace = "http://ws.governo.com.br/", className = "br.com.fiap.client.ListarNotasFiscaisResponse")
+    @RequestWrapper(localName = "listarNotasFiscais", targetNamespace = "http://ws.governo.com.br/", className = "br.com.governo.ws.ListarNotasFiscais")
+    @ResponseWrapper(localName = "listarNotasFiscaisResponse", targetNamespace = "http://ws.governo.com.br/", className = "br.com.governo.ws.ListarNotasFiscaisResponse")
     public List<NotaFiscal> listarNotasFiscais(
         @WebParam(name = "cpfOuCnpj", targetNamespace = "")
         String cpfOuCnpj)
@@ -64,13 +64,13 @@ public interface WebServiceNF {
     /**
      * 
      * @return
-     *     returns java.util.List<br.com.fiap.client.Imposto>
+     *     returns java.util.List<br.com.governo.ws.Imposto>
      * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listarImpostos", targetNamespace = "http://ws.governo.com.br/", className = "br.com.fiap.client.ListarImpostos")
-    @ResponseWrapper(localName = "listarImpostosResponse", targetNamespace = "http://ws.governo.com.br/", className = "br.com.fiap.client.ListarImpostosResponse")
+    @RequestWrapper(localName = "listarImpostos", targetNamespace = "http://ws.governo.com.br/", className = "br.com.governo.ws.ListarImpostos")
+    @ResponseWrapper(localName = "listarImpostosResponse", targetNamespace = "http://ws.governo.com.br/", className = "br.com.governo.ws.ListarImpostosResponse")
     public List<Imposto> listarImpostos()
         throws Exception_Exception
     ;

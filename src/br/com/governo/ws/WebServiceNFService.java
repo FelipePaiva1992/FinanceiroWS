@@ -1,5 +1,5 @@
 
-package br.com.fiap.governo;
+package br.com.governo.ws;
 
 import java.net.MalformedURLException;
 import java.net.URL;

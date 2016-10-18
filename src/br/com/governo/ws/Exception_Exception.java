@@ -1,5 +1,5 @@
 
-package br.com.fiap.governo;
+package br.com.governo.ws;
 
 import javax.xml.ws.WebFault;
 
@@ -19,14 +19,14 @@ public class Exception_Exception
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
-    private br.com.fiap.governo.Exception faultInfo;
+    private br.com.governo.ws.Exception faultInfo;
 
     /**
      * 
      * @param faultInfo
      * @param message
      */
-    public Exception_Exception(String message, br.com.fiap.governo.Exception faultInfo) {
+    public Exception_Exception(String message, br.com.governo.ws.Exception faultInfo) {
         super(message);
         this.faultInfo = faultInfo;
     }
@@ -37,7 +37,7 @@ public class Exception_Exception
      * @param cause
      * @param message
      */
-    public Exception_Exception(String message, br.com.fiap.governo.Exception faultInfo, Throwable cause) {
+    public Exception_Exception(String message, br.com.governo.ws.Exception faultInfo, Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }
@@ -45,9 +45,9 @@ public class Exception_Exception
     /**
      * 
      * @return
-     *     returns fault bean: br.com.fiap.client.Exception
+     *     returns fault bean: br.com.governo.ws.Exception
      */
-    public br.com.fiap.governo.Exception getFaultInfo() {
+    public br.com.governo.ws.Exception getFaultInfo() {
         return faultInfo;
     }
 

@@ -1,5 +1,5 @@
 
-package br.com.fiap.governo;
+package br.com.governo.ws;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for listarNotasFiscaisResponse complex type.
+ * <p>Java class for listarImpostosResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="listarNotasFiscaisResponse">
+ * &lt;complexType name="listarImpostosResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://ws.governo.com.br/}notaFiscal" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://ws.governo.com.br/}imposto" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "listarNotasFiscaisResponse", propOrder = {
+@XmlType(name = "listarImpostosResponse", propOrder = {
     "_return"
 })
-public class ListarNotasFiscaisResponse {
+public class ListarImpostosResponse {
 
     @XmlElement(name = "return")
-    protected List<NotaFiscal> _return;
+    protected List<Imposto> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class ListarNotasFiscaisResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link NotaFiscal }
+     * {@link Imposto }
      * 
      * 
      */
-    public List<NotaFiscal> getReturn() {
+    public List<Imposto> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<NotaFiscal>();
+            _return = new ArrayList<Imposto>();
         }
         return this._return;
     }
